@@ -1,9 +1,10 @@
 const { query } = require('express')
 const { body, validationResult } = require('express-validator');
 const db = require('../db/query');
+const { search } = require('../routes/userRouter');
 
 async function userListGet(req, res) {
-  const users = await db.getAllUsers();
+  users = !req.query.search ? await db.getAllUsers() : await db.findUsers(req.query.search);
   console.log("Users:", users);
   res.send("Users:" + users.map(user => user.username).join(", "));
 };
