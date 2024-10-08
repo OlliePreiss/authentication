@@ -19,8 +19,15 @@ async function userCreatePost(req, res) {
   res.redirect("/");
 }
 
+async function userDeleteGet(req, res) {
+  db.deleteUsers();
+  console.log("Users deleted");
+  res.redirect("/");
+}
+
 module.exports = {
   userListGet,
   userCreateGet,
-  userCreatePost
+  userCreatePost,
+  userDeleteGet
 }
