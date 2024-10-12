@@ -10,7 +10,7 @@ async function userListGet(req, res) {
 };
 
 async function userCreateGet(req, res)  {
-  res.render("createUser");
+  // res.render("createUser");
 }
 
 async function userCreatePost(req, res) {

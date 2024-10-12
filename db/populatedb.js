@@ -1,16 +1,11 @@
 const { Client } = require("pg");
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS usernames (
+CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  username VARCHAR ( 255 )
+  username VARCHAR ( 255 ),
+  password VARCHAR ( 255 )
 );
-
-INSERT INTO usernames (username)
-VALUES
-  ('Bryan'),
-  ('Odin'),
-  ('Damon');
 `;
 
 async function main() {
@@ -18,7 +13,7 @@ async function main() {
   const client = new Client({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    database: "top_users",
+    database: "users",
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT
   });
